@@ -41,3 +41,14 @@ export default {
     },
 }
 </script>
+<style scoped>
+li{list-style:none;}
+input{
+display:block;
+margin-bottom:10px;
+color:brown;
+}
+
+
+    
+</style>
