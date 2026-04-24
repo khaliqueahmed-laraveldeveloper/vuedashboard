@@ -14,9 +14,22 @@
         {{ user.name }} - {{ user.email }}
     </li>
 </ul>
+<slot></slot>
+
+
 </template>
 <script >
 export default {
+props:{
+    foodPrice: {
+        type: String,
+        required: true,
+        default: '0',
+        validator: (value) => {
+        // This explicitly checks the type and throws an error if it fails
+        return typeof value === 'string';
+        }
+    },},
     data() {
         return {
             name:'',
@@ -25,6 +38,10 @@ export default {
         }
     },
     methods: {
+    handlePrice(){
+        this.$emit('foodPriceChanged', '20.23');
+        },
+
         handleSubmit(){
         
         let user={
@@ -48,7 +65,5 @@ display:block;
 margin-bottom:10px;
 color:brown;
 }
-
-
-    
+ 
 </style>
