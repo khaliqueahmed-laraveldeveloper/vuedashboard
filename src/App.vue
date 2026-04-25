@@ -1,33 +1,21 @@
     <script>
     import componentOne from './components/componentOne.vue'
     import componentTwo from './components/componentTwo.vue'
-export default {
-            components: {
-    componentOne,
-    componentTwo
-  },
-            data() {
-                return {
-                    toggleValue: true
-                }
-            },
-            computed:{
-            activeComp() {
-            if(this.toggleValue) {
-                    return 'componentOne'
-                    }
-                    else {
-                    return 'componentTwo'
-                    }
-            }},
+        export default {
+                    components: {
+            componentOne,
+            componentTwo
+        },
             }
     </script>
 
-<template v-slot="default">
-<button @click="toggleValue= !toggleValue">switch button</button>
-<keep-alive exclude="componentTwo">
-  <component :is="activeComp"></component>
-</keep-alive>
+<template>
+  
+ <router-link to="/com1">One</router-link>
+ <br>
+ <router-link to="/com2">Two</router-link>
+
+<router-view></router-view>
 </template>
 
 <style scoped>
