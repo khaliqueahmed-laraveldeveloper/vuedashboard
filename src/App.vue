@@ -1,26 +1,33 @@
-<script>
+    <script>
+    import componentOne from './components/componentOne.vue'
+    import componentTwo from './components/componentTwo.vue'
 export default {
-    data() {
-        return {
-            foodPrice: '12.20'
-        }
-    },
-    methods: {
-    receiveEmit(){
-            this.foodPrice = '30.45';
-        }
-    }}
-</script>
+            components: {
+    componentOne,
+    componentTwo
+  },
+            data() {
+                return {
+                    toggleValue: true
+                }
+            },
+            computed:{
+            activeComp() {
+            if(this.toggleValue) {
+                    return 'componentOne'
+                    }
+                    else {
+                    return 'componentTwo'
+                    }
+            }},
+            }
+    </script>
 
-<template>
- <h3>Vue 3 + Vite + TypeScript + Tailwind CSS</h3>
- <p>This is a simple vue with more details data </p>
-
-<test>
-product price: {{ foodPrice }}
-
-</test>
-
+<template v-slot="default">
+<button @click="toggleValue= !toggleValue">switch button</button>
+<keep-alive exclude="componentTwo">
+  <component :is="activeComp"></component>
+</keep-alive>
 </template>
 
 <style scoped>
